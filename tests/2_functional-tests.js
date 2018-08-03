@@ -161,8 +161,6 @@ suite('Functional Tests', function() {
           .end(function(err, res){
             assert.equal(res.status, 200);
           
-            console.log(res.body);
-          
             assert.equal(res.body, "unsuccessful");
           
             done();
@@ -176,8 +174,6 @@ suite('Functional Tests', function() {
           .send({thread_id: thread_id1, reply_id: reply_id})
           .end(function(err, res){
             assert.equal(res.status, 200);
-          
-            console.log(res.body)
           
             assert.equal(res.body, "reported");
           

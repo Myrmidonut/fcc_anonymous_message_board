@@ -141,8 +141,6 @@ module.exports = function (app) {
       const board  = req.params.board;
       const thread_id = ObjectId(req.body.thread_id);
       const delete_password = req.body.delete_password;
-    
-      //console.log("delete route: ", req.body.thread_id, thread_id);
 
       MongoClient.connect(URL, (err, db) => {
         if (err) console.log(err);
