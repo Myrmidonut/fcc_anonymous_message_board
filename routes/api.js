@@ -73,8 +73,10 @@ module.exports = app => {
           const collection = db.collection(board);
           
           collection.findOneAndUpdate({_id: report_id}, {$set: {reported: true}}, {returnOriginal: false}, (err, result) => {
-            if (result.value) res.json("reported");
-            else if (result.value === null) res.json("unsuccessful");
+            if (err) console.log(err);
+            
+            if (result.value !== null) res.json("reported")
+            else res.json("unsuccessful");
           })
         }
       })
