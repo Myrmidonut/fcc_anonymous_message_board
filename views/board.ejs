@@ -1,0 +1,35 @@
+<% include partials/header.ejs %>
+
+  <link href="/style_board.css" rel="stylesheet">
+</head>
+
+<body>
+
+  <header>
+    <h1 id="boardTitle"></h1>
+  </header>
+
+  <main>
+    
+    <h3><a href="/">Back to Main</a></h3>
+
+    <div id="submitNewThread">
+      <h3>Submit a new thread:</h3>
+      <form id="newThread" method="post" action="/api/">
+        <textarea type="text" placeholder="Thread text" name="text" required=""></textarea>
+        <input type="text" placeholder="Password" name="delete_password" required="">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+
+    <div id="boardDisplay"></div>
+
+  </main>
+
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+          integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+          crossorigin="anonymous"></script>
+
+  <script src="/script_board.js"></script>
+
+<% include partials/footer.ejs %>

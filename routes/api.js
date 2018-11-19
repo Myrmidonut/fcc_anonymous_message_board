@@ -12,6 +12,20 @@ MongoClient.connect(URL, (err, db) => {
 });
 
 module.exports = app => {
+  
+  app.route("/api/boards")
+    .get((req, res) => {
+      MongoClient.connect(URL, (err, db) => {
+        if (err) console.log(err);
+        else {
+          db.listCollections().toArray((err, result) => {
+            const boards = result.map(e => e.name)
+            res.json(boards);
+          })
+        }
+      })
+    })
+  
   app.route('/api/threads/:board')
     .get((req, res) => {      
       const board = req.params.board;

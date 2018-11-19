@@ -3,6 +3,7 @@ dependencies:
   chai: 3.5.0
   chai-http: 3.0.0
   cors: 2.8.4
+  ejs: 2.6.1
   express: 4.16.3
   helmet: 3.13.0
   mocha: 3.5.3
@@ -364,6 +365,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
+  /ejs/2.6.1:
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-0xy4A/twfrRCnkhfk8ErDi5DqdAsAqeGxht4xkCUrsvhhbQNs7E+4jV0CN7+NKIY0aHE72+XvqtBIXzD31ZbXQ==
   /encodeurl/1.0.2:
     dev: false
     engines:
@@ -1512,6 +1519,7 @@ specifiers:
   chai: ^3.5.0
   chai-http: ^3.0.0
   cors: ^2.8.1
+  ejs: ^2.6.1
   express: ^4.14.0
   helmet: ^3.1.0
   mocha: ^3.2.0

@@ -4,6 +4,7 @@ const deleteThread = document.getElementById("deleteThread");
 const newReply = document.getElementById("newReply");
 const reportReply = document.getElementById("reportReply");
 const deleteReply = document.getElementById("deleteReply");
+const boardList = document.getElementById("boardList");
 
 const board1 = document.getElementById("board1");
 const board2 = document.getElementById("board2");
@@ -19,6 +20,16 @@ const deleteThreadStatus = document.getElementById("deleteThreadStatus");
 const reportReplyStatus = document.getElementById("reportReplyStatus");
 const deleteReplyStatus = document.getElementById("deleteReplyStatus");
 const newReplyStatus = document.getElementById("newReplyStatus");
+
+const boardListUrl = "/api/boards";
+
+fetch(boardListUrl)
+.then(response => response.json())
+.then(data => {
+  data.forEach(e => {
+    boardList.innerHTML += `<div class="boardListItem"><a href="/b/${e}/">${e}</a></div>`;
+  })
+})
 
 newThread.addEventListener("submit", e => {
   e.preventDefault();
