@@ -1,0 +1,71 @@
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #222;
+	background-color: #FaFaFa;
+	text-align: center;
+}
+
+textarea {
+  width: 100%;
+  max-width: 600px;
+  height: 100px;
+  box-sizing: border-box;
+}
+
+textarea, input {
+  font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #222;
+  margin: 10px 0;
+  padding: 5px;
+  border: 5px solid #87D37C;
+  background-color: white;
+}
+
+input[type="submit"]:hover {
+  border: 5px solid white;
+  background: #87D37C;
+}
+
+span {
+  width: 100px;
+  display: inline-block;
+  padding: 0 10px;
+}
+
+.thread {
+  border: 5px solid #87D37C;
+  max-width: 800px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: left;
+}
+
+.reportThread, .deleteThread, .newReply, .reportReply, .deleteReply {
+  text-align: center;
+}
+
+.reply, .details {
+  background-color: #87D37C;
+  padding: 10px;
+  margin: 10px 0;
+}
+
+.reply p:first-of-type, .details p:first-of-type {
+  background-color: white;
+  padding: 10px;
+}
+
+#newThread textarea {
+  margin: auto;
+  display: block;
+}
+
+a, a:visited {
+  color: #2574A9;
+}
+
+.replies h3 {
+  padding-left: 20px;
+}

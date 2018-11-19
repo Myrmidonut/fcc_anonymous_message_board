@@ -8,6 +8,7 @@ const apiRoutes         = require('./routes/api.js');
 const fccTestingRoutes  = require('./routes/fcctesting.js');
 const runner            = require('./test-runner');
 const helmet            = require("helmet");
+const ejs               = require("ejs");
 
 const app = express();
 
@@ -19,16 +20,18 @@ app.use(helmet.frameguard({action: "same-origin"}));
 app.use(helmet.dnsPrefetchControl());
 app.use(helmet.referrerPolicy({policy: "same-origin"}));
 
+app.set("view engine", "ejs");
+
 //Sample front-end
-app.route('/b/:board/')
-  .get((req, res) => res.sendFile(process.cwd() + '/views/board.html'));
+app.route('/b/:board')
+  .get((req, res) => res.render(process.cwd() + '/views/board.ejs'));
 
 app.route('/b/:board/:threadid')
-  .get((req, res) => res.sendFile(process.cwd() + '/views/thread.html'));
+  .get((req, res) => res.render(process.cwd() + '/views/thread.ejs'));
 
 //Index page (static HTML)
 app.route('/')
-  .get((req, res) => res.sendFile(process.cwd() + '/views/index.html'));
+  .get((req, res) => res.render(process.cwd() + '/views/index.ejs'));
 
 //For FCC testing purposes
 fccTestingRoutes(app);
