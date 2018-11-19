@@ -1,36 +1,176 @@
-* {
-  margin: 0px;
-  padding: 0px;
-}
-
 body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	color: #222;
+	background-color: #FaFaFa;
+	text-align: center;
+	line-height: 1.4em;
+}
+
+.container {
+	padding: 0;
+	margin-top: 40px;
+  margin: auto;
+  xmax-width: 800px;
+}
+
+h3 {
+  margin-top: 30px;
+}
+
+h1 {
+  line-height: initial;
+}
+
+.user-stories {
+  position: relative;
+  text-align: left;
+  max-width: 700px;
+  margin: 15px auto;
+}
+
+.user-stories li {
+  margin-bottom: 1em;
+}
+
+code {
+  font-family: monospace;
+  color: black;
+  background-color: rgba(0,0,0,0.1);
+}
+
+a {
+	color: #2574A9;
+}
+
+ol {
+	list-style-position: inside;
+}
+
+ul {
+	list-style-type: none;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+input[type=checkbox] {
+  display: inline;
+  width: 20px;
+}
+
+form, .issue {
+  box-sizing: border-box;
+  padding: 15px;
+  background-color: #87D37C;
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  vertical-align: top;
+}
+
+input, textarea, button {
+  box-sizing: border-box;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+}
+
+input[type=submit], button {
+  font-size: 16px;
+  border-radius: 3px;
+  background-color: #E4F1FE;
+  border: 1px solid grey;
+  box-shadow: 2px 2px #999;
+  cursor: pointer;
+}
+
+input[type=submit]:hover, button:hover {
+  background-color: #FFFEC4;
+}
+
+.status {
+  text-align: center;
+}
+
+.issue {
+  border: 1px solid black;
+  margin-bottom: 20px;
+  margin-left: 1%;
+  margin-right: 1%;
+  padding-bottom: 0;
+}
+
+.issue h3 {
   padding: 10px;
+  display: inline-block;
+  border: 1px;
+  background: rgba(0,0,0,0.1);
 }
 
-.replies {
-  margin-left: 50px;
+#jsonResult {
+  height: 70px;
+  border: 1px solid black;
+  border-radius: 3px;
+  max-width: 800px;
+  margin: auto;
+  margin-bottom: 20px;
 }
 
-.reply {
-  border: 1px dotted black;
-  margin: 5px;
+#newIssue textarea {
+  height: 100px;
+}
+
+.issue hr {
+  border: 1px solid white;
+}
+
+#projectsList {
+  list-style: none;
+  padding: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.projectLink {
+  cursor: pointer;
+  box-sizing: border-box;
+  margin: 0;
+  margin-bottom: 10px;
   padding: 5px;
+  width: 100%;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  background-color: white;
 }
 
-.newReply {
-  margin: 10px 5px 10px 5px;
+.projectLink:hover {
+  border: 1px solid black;
 }
 
-.thread {
-  border: 2px solid black;
-  padding: 5px;
-  margin-bottom: 5px;
+#projectsList h3 {
+  margin-top: 10px;
 }
 
-.id {
-  font-size: 10.5px;
+#exampleReturn {
+  max-width: 800px;
+  display: inline-block;
 }
 
-#submitNewThread {
-  margin: 50px;
+hr {
+  max-width: 1470px;
+}
+
+.testForm {
+  margin-left: 1%;
+    margin-right: 1%;
 }
