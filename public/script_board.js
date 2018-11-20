@@ -2,7 +2,7 @@ $(function() {
   const currentBoard = window.location.pathname.slice(3);
   const url = `/api/threads/${currentBoard}`;
   
-  $('#boardTitle').text('Welcome to ' + window.location.pathname)
+  $('#boardTitle').text('Welcome to ' + window.location.pathname.slice(2))
   
   $.ajax({
     type: "GET",
@@ -30,7 +30,7 @@ $(function() {
         let hiddenCount = ele.replycount - 3;
         if (hiddenCount < 1) hiddenCount = 0;
         
-        thread.push('<h3>' + ele.replycount + ' replies total (' + hiddenCount + ' hidden) - <a href="' + window.location.pathname + ele._id + '">See the full thread here</a></h3>');
+        thread.push('<h3>' + ele.replycount + ' replies total (' + hiddenCount + ' hidden) - <a href="' + window.location.pathname + '/' + ele._id + '">See the full thread here</a></h3>');
         
         ele.replies.forEach(function(rep) {
           thread.push('<div class="reply">')
