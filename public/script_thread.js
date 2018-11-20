@@ -5,11 +5,11 @@ $(function() {
   
   const url = "/api/replies/" + currentURL[0];
   
-  $('#threadTitle').text(window.location.pathname);
+  $('#threadTitle').text(window.location.pathname.slice(2));
   
   const backToBoard = document.getElementById("backToBoard");
   
-  backToBoard.innerHTML = `<a href="/b/${currentURL[0]}">Back to /b/${currentURL[0]}</a>`
+  backToBoard.innerHTML = `<a href="/b/${currentURL[0]}">Back to /${currentURL[0]}</a>`
   
   $.ajax({
     type: "GET",
