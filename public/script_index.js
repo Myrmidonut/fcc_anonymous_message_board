@@ -56,7 +56,7 @@ reportThread.addEventListener("submit", e => {
     method: "put",
     body: new URLSearchParams(new FormData(reportThread))
   })
-  .then(response => response.json())
+  .then(response => response.text())
   .then (data => {
     reportThreadStatus.textContent = data;
   })

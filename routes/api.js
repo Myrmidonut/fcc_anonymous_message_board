@@ -12,7 +12,6 @@ MongoClient.connect(URL, (err, db) => {
 });
 
 module.exports = app => {
-  
   app.route("/api/boards")
     .get((req, res) => {
       MongoClient.connect(URL, (err, db) => {
@@ -87,7 +86,7 @@ module.exports = app => {
       })
     })
     
-    .put((req, res) => { 
+    .put((req, res) => {
       const thread_id = req.body.thread_id;
       const board = req.params.board;
       
@@ -150,7 +149,7 @@ module.exports = app => {
         else {
           const collection = db.collection(board);
           
-          collection.findOne({_id: ObjectId(thread_id)}, {delete_password: 0, reported: 0, "replies.delete_password": 0, "replies.reported": 0}, (err, result) => {
+          collection.findOne({_id: ObjectId(thread_id)}, {delete_password: 0, "replies.delete_password": 0}, (err, result) => { // reported: 0, "replies.reported": 0 for testing
             res.json(result);
           })
         }
@@ -191,7 +190,8 @@ module.exports = app => {
               else if (result.value === null) {
                 res.json("ID not found")
               } else {
-                res.redirect("/b/" + board + "/" + thread_id + "/");
+                //res.redirect("/b/" + board + "/" + thread_id + "/");
+                res.json("Success");
               }
             })
           }
