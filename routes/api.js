@@ -26,8 +26,8 @@ module.exports = app => {
       })
     })
   
-  app.route('/api/threads/:board')
-    .get((req, res) => {      
+  app.route("/api/threads/:board")
+    .get((req, res) => {
       const board = req.params.board;
       
       MongoClient.connect(URL, (err, db) => {
@@ -35,7 +35,11 @@ module.exports = app => {
         else {
           const collection = db.collection(board);
           
-          collection.find({deleted: false}, {delete_password: 0, reported: 0, "replies.delete_password": 0, "replies.reported": 0}).sort({bumped_on: -1}).limit(10).toArray((err, result) => {
+          collection
+          .find({deleted: false}, {delete_password: 0, "replies.delete_password": 0}) // reported: 0, "replies.reported": 0 for testing
+          .sort({bumped_on: -1})
+          .limit(10)
+          .toArray((err, result) => {     
             result.forEach(e => {
               e.replycount = e.replies.length;
               
@@ -75,7 +79,8 @@ module.exports = app => {
           }, (err, result) => {
             if (err) console.log(err);
             else {
-              res.redirect(`/b/${board}/`);
+              //res.redirect(`/b/${board}/`);
+              res.send("Success")
             }
           })
         }
@@ -100,9 +105,9 @@ module.exports = app => {
                 
                 res.send("could not update " + req.body.thread_id);
               } else if (result.value !== null) {
-                res.json("reported")
+                res.send("reported")
               } else {
-                res.json("unsuccessful");
+                res.send("unsuccessful");
               }
             })
           }
@@ -135,7 +140,7 @@ module.exports = app => {
       }
     })
     
-  app.route('/api/replies/:board')
+  app.route("/api/replies/:board")
     .get((req, res) => {
       const board     = req.params.board;
       const thread_id = req.query.thread_id;
