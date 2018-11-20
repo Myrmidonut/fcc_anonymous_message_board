@@ -32,7 +32,7 @@ function getThreads() {
       let hiddenCount = ele.replycount - 3;
       if (hiddenCount < 1) hiddenCount = 0;
       
-      thread.push('<h3>' + ele.replycount + ' replies total (' + hiddenCount + ' hidden) - <a href="' + window.location.pathname + '/' + ele._id + '">See the full thread here</a></h3>');
+      thread.push('<h3>' + ele.replycount + ' replies total (' + hiddenCount + ' hidden) - <a href="' + window.location.pathname + ele._id + '">See the full thread here</a></h3>');
       
       ele.replies.forEach(function(rep) {
         thread.push('<div class="reply">')
@@ -48,7 +48,7 @@ function getThreads() {
         thread.push('<form class="deleteReply"><input type="hidden" value="' + ele._id + '" name="thread_id" required=""><input type="hidden" value="' + rep._id + '" name="reply_id" required=""><input type="text" placeholder="Password" name="delete_password" required=""><input type="submit" value="Delete"></form>');
         thread.push('</div>')
       });
-
+      
       thread.push('<div class="newReply">')
       thread.push('<form action="/api/replies/' + currentBoard + '/" method="post" id="newReply">');
       thread.push('<input type="hidden" name="thread_id" value="' + ele._id + '">');
@@ -84,7 +84,7 @@ function newThread() {
     })
     .then(response => response.text())
     .then(data => {
-      alert("success");
+      //alert("success");
       newThread.reset();
       getThreads();
     })
@@ -104,7 +104,7 @@ function reportThread() {
       })
       .then(response => response.text())
       .then(data => {
-        alert(data);
+        //alert(data);
         getThreads();
       })
     })
@@ -124,7 +124,7 @@ function deleteThread() {
       })
       .then(response => response.json())
       .then(data => {
-        alert(data);
+        //alert(data);
         getThreads();
       })
     })
@@ -144,7 +144,7 @@ function reportReply() {
       })
       .then(response => response.text())
       .then(data => {
-        alert(data);
+        //alert(data);
         getThreads();
       })
     })
@@ -164,7 +164,7 @@ function deleteReply() {
       })
       .then(response => response.json())
       .then(data => {
-        alert(data);
+        //alert(data);
         getThreads();
       })
     })
