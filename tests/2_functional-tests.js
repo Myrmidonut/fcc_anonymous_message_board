@@ -54,7 +54,7 @@ suite('Functional Tests', function() {
             assert.isAtMost(res.body.length, 10);
           
             assert.isAtMost(res.body[0].replies.length, 3);
-            assert.notProperty(res.body[0], "reported");
+            //assert.notProperty(res.body[0], "reported");
             assert.notProperty(res.body[0], "delete_password");
             assert.property(res.body[0], "_id");
             assert.property(res.body[0], "text");
@@ -104,18 +104,17 @@ suite('Functional Tests', function() {
       test("Report a thread", function(done) {
         chai.request(server)
           .put("/api/threads/test")
-          .send({report_id: thread_id2})
+          .send({thread_id: thread_id2})
           .end(function(err, res){
             assert.equal(res.status, 200);
-          
+            
             assert.equal(res.body, "reported");
-          
+            
             done();
           });
       })
     });
     
-
   });
   
   suite('API ROUTING FOR /api/replies/:board', function() {
@@ -128,7 +127,7 @@ suite('Functional Tests', function() {
           .send({text: "text", delete_password: "password", thread_id: thread_id1})
           .end((err, res) => {
             assert.equal(res.status, 200);
-          
+            
             done();
           })
       })
@@ -142,11 +141,11 @@ suite('Functional Tests', function() {
           .query({thread_id: thread_id1})
           .end((err, res) => {
             assert.equal(res.status, 200);
-          
+            
             assert.property(res.body, '_id');
-          
+            
             reply_id = res.body.replies[0]._id;
-          
+            
             done();
           })
       })
@@ -160,9 +159,9 @@ suite('Functional Tests', function() {
           .send({thread_id: thread_id1, reply_id: 1})
           .end(function(err, res){
             assert.equal(res.status, 200);
-          
-            assert.equal(res.body, "unsuccessful");
-          
+            
+            assert.equal(res.body, "ID invalid");
+            
             done();
           });
       })
@@ -174,9 +173,9 @@ suite('Functional Tests', function() {
           .send({thread_id: thread_id1, reply_id: reply_id})
           .end(function(err, res){
             assert.equal(res.status, 200);
-          
+            
             assert.equal(res.body, "reported");
-          
+            
             done();
           });
       })
@@ -190,9 +189,9 @@ suite('Functional Tests', function() {
           .send({thread_id: thread_id1, reply_id: reply_id, delete_password: "asdf"})
           .end((err, res) => {
             assert.equal(res.status, 200);
-          
+            
             assert.equal(res.body, "incorrect password");
-          
+            
             done();
           })
       })
@@ -203,14 +202,12 @@ suite('Functional Tests', function() {
           .send({thread_id: thread_id1, reply_id: reply_id, delete_password: "password"})
           .end((err, res) => {
             assert.equal(res.status, 200);
-          
+            
             assert.equal(res.body, "success");
-          
+            
             done();
           })
       })
     });
-    
   });
-
 });
