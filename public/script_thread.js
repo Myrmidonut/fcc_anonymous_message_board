@@ -3,9 +3,12 @@ $(function() {
   
   currentURL = currentURL.split('/');
   
-  const url = "/api/replies/" + currentURL[0];
+  const url = `/api/replies/${currentURL[0]}`;
   
-  $('#threadTitle').text(window.location.pathname.slice(2));
+  //$('#threadTitle').text(window.location.pathname.slice(2));
+  
+  const threadTitle = document.getElementById("threadTitle")
+  threadTitle.textContent = window.location.pathname.slice(2);
   
   const backToBoard = document.getElementById("backToBoard");
   
@@ -18,12 +21,6 @@ $(function() {
     success: function(ele)
     {
       let boardThreads= [];
-      
-      //
-      // THIS ARRAY SET UP IS FOR CODE READABILITIES AND TESTING!
-      // THIS IS NOT WHAT IT WOULD LOOK LIKE TO GO LIVE
-      //
-      
       let thread = ['<div class="thread">'];
       
       thread.push('<div class="details">');
