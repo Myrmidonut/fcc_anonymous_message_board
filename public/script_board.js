@@ -2,6 +2,7 @@ const currentBoard = window.location.pathname.slice(3);
 const threadUrl = `/api/threads/${currentBoard}`;
 const replyUrl = `/api/replies/${currentBoard}`;
 const boardTitle = document.getElementById("boardTitle");
+let newThreadCounter = false;
 
 boardTitle.textContent = `Welcome to ${window.location.pathname.slice(2)}`
 
@@ -13,7 +14,7 @@ function getThreads() {
   .then(data => {
     let boardThreads= [];
 
-    data.forEach(function(ele) { 
+    data.forEach(ele => { 
       let thread = ['<div class="thread">'];
       
       thread.push('<div class="details">');
@@ -34,7 +35,7 @@ function getThreads() {
       
       thread.push('<h3>' + ele.replycount + ' replies total (' + hiddenCount + ' hidden) - <a href="' + window.location.pathname + ele._id + '">See the full thread here</a></h3>');
       
-      ele.replies.forEach(function(rep) {
+      ele.replies.forEach(rep => {
         thread.push('<div class="reply">')
         thread.push('<p>' + rep.text + '</p>');
         thread.push('<p class="id"><span>ID: </span>' + rep._id + '</p>');
@@ -49,8 +50,8 @@ function getThreads() {
         thread.push('</div>')
       });
       
-      thread.push('<div class="newReply">')
-      thread.push('<form action="/api/replies/' + currentBoard + '/" method="post" id="newReply">');
+      thread.push('<div class="newReplyContainer">')
+      thread.push('<form class="newReply">');
       thread.push('<input type="hidden" name="thread_id" value="' + ele._id + '">');
       thread.push('<textarea type="text" placeholder="Quick reply" name="text" required=""></textarea><br>');
       thread.push('<input type="text" placeholder="Password" name="delete_password" required=""><input type="submit" value="Submit">')
@@ -64,11 +65,12 @@ function getThreads() {
     boardDisplay.innerHTML = boardThreads.join("");
   })
   .then(() => {
-    newThread();
+    if (newThreadCounter === false) newThread();
     reportThread();
     deleteThread();
     reportReply();
     deleteReply();
+    newReply();
   });
 }
 
@@ -84,11 +86,12 @@ function newThread() {
     })
     .then(response => response.text())
     .then(data => {
-      //alert("success");
       newThread.reset();
       getThreads();
     })
   })
+  
+  newThreadCounter = true;
 }
 
 function reportThread() {
@@ -104,7 +107,7 @@ function reportThread() {
       })
       .then(response => response.text())
       .then(data => {
-        //alert(data);
+        e.reset();
         getThreads();
       })
     })
@@ -124,7 +127,27 @@ function deleteThread() {
       })
       .then(response => response.json())
       .then(data => {
-        //alert(data);
+        e.reset();
+        getThreads();
+      })
+    })
+  })
+}
+
+function newReply() {
+  const newReply = document.querySelectorAll(".newReply");
+  
+  newReply.forEach(e => {
+    e.addEventListener("submit", f => {
+      f.preventDefault;
+      
+      fetch(replyUrl, {
+        method: "post",
+        body: new URLSearchParams(new FormData(e))
+      })
+      .then(response => response.json())
+      .then(data => {
+        e.reset();
         getThreads();
       })
     })
@@ -144,7 +167,7 @@ function reportReply() {
       })
       .then(response => response.text())
       .then(data => {
-        //alert(data);
+        e.reset();
         getThreads();
       })
     })
@@ -164,7 +187,7 @@ function deleteReply() {
       })
       .then(response => response.json())
       .then(data => {
-        //alert(data);
+        e.reset();
         getThreads();
       })
     })

@@ -14,6 +14,8 @@ MongoClient.connect(URL, (err, db) => {
 module.exports = app => {
   app.route("/api/boards")
     .get((req, res) => {
+      //console.log("get boards");
+      
       MongoClient.connect(URL, (err, db) => {
         if (err) console.log(err);
         else {
@@ -27,6 +29,8 @@ module.exports = app => {
   
   app.route("/api/threads/:board")
     .get((req, res) => {
+      //console.log("get all threads for board");
+      
       const board = req.params.board;
       
       MongoClient.connect(URL, (err, db) => {
@@ -54,6 +58,8 @@ module.exports = app => {
     })
     
     .post((req, res) => {
+      //console.log("post thread")
+      
       const board           = req.params.board;
       const text            = req.body.text;
       const delete_password = req.body.delete_password;
@@ -87,6 +93,8 @@ module.exports = app => {
     })
     
     .put((req, res) => {
+      //console.log("report thread");
+      
       const thread_id = req.body.thread_id;
       const board = req.params.board;
       
@@ -115,6 +123,8 @@ module.exports = app => {
     })
     
     .delete((req, res) => {
+      //console.log("delete thread");
+      
       const board  = req.params.board;
       const thread_id = req.body.thread_id;
       const delete_password = req.body.delete_password;
@@ -141,6 +151,8 @@ module.exports = app => {
     
   app.route("/api/replies/:board")
     .get((req, res) => {
+      //console.log("get thread on specific board")
+      
       const board     = req.params.board;
       const thread_id = req.query.thread_id;
       
@@ -157,6 +169,8 @@ module.exports = app => {
     })
     
     .post((req, res) => {
+      //console.log("post reply");
+      
       const board           = req.params.board;
       const text            = req.body.text;
       const delete_password = req.body.delete_password;
@@ -200,6 +214,8 @@ module.exports = app => {
     })
     
     .put((req, res) => {
+      //console.log("report reply");
+      
       const board     = req.params.board;
       const thread_id = req.body.thread_id;
       const reply_id  = req.body.reply_id;
@@ -225,6 +241,8 @@ module.exports = app => {
     })
     
     .delete((req, res) => {
+      //console.log("delete reply");
+      
       const board           = req.params.board;
       const thread_id       = req.body.thread_id;
       const reply_id        = req.body.reply_id;
