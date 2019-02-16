@@ -20,7 +20,13 @@ module.exports = app => {
         if (err) console.log(err);
         else {
           db.listCollections().toArray((err, result) => {
-            const boards = result.map(e => e.name)
+            const boards = [];
+            
+            result.forEach(e => {
+              if (e.name !== "system.indexes") {
+                boards.push(e.name);
+              }
+            })
             res.json(boards);
           })
         }
