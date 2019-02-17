@@ -24,3 +24,15 @@ This project is part of freeCodeCamps Information Security and Quality Assurance
 * Helmet
 * Chai
 * MongoDB
+
+***
+
+## Preview Images
+### Project Requirements:
+![Requirements](readme_images/anonymous-message-board-1.png)  
+
+### Boards Screen:
+![Boards](readme_images/anonymous-message-board-2.png)
+
+### Thread and Replies Screen:
+![Thread and Replies](readme_images/anonymous-message-board-3.png)  
