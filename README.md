@@ -1,11 +1,26 @@
-**FreeCodeCamp**- Information Security and Quality Assurance
-------
+# Anonymous Message Board
 
-Project Anon Message Board
+## Introduction
 
-1) SET NODE_ENV to `test` without quotes when ready to write tests and DB to your databases connection string (in .env)
-2) Recomended to create controllers/handlers and handle routing in routes/api.js
-3) You will add any security features to `server.js`
-4) You will create all of the functional/unit tests in `tests/2_functional-tests.js` and `tests/1_unit-tests.js` but only functional will be tested
+Users are presented with a number of message boards, each board shows a list of threads containing the original message and the replies to it.  
 
+Additional message boards are added if they dont exist. Threads and replies can be deleted with the original password.  
 
+Main focus lies on the implementation of the backend and its feature testing.  
+
+This project is part of freeCodeCamps Information Security and Quality Assurance certificate.
+
+***
+
+## Behind the scenes
+### Frontend
+* HTML5
+* CSS3
+* JavaScript
+
+### Backend
+* Node
+* Express
+* Helmet
+* Chai
+* MongoDB
