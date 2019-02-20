@@ -44,6 +44,7 @@ a {
 
 ol {
 	list-style-position: inside;
+	padding-left: 0;
 }
 
 li {
