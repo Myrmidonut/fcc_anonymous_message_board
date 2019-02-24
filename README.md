@@ -55,7 +55,7 @@ https://fcc-infosec-anonymous-message-board-fred.glitch.me
 
 ## Preview Images
 ### Boards View:
-![Boards](readme_images/anonymous-message-board-2.png)
+![Boards](readme_images/anonymous-message-board-1.png)
 
 ### Thread and Replies View:
-![Thread and Replies](readme_images/anonymous-message-board-3.png)  
+![Thread and Replies](readme_images/anonymous-message-board-2.png)  
